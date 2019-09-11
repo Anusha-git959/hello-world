@@ -1,3 +1,3 @@
-<h1> Hello, Welcome to Valaxy Technologies !!! </h1>
-<h2> Deploying on Kubernetes </h2>
-<h3> One last test </h3>
+<h1> Hello kumar, Welcome to tomcat !!! </h1>
+<h2> Deploying on tomcat </h2>
+<h3> first test </h3>
