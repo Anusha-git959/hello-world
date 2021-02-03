@@ -1,12 +1,26 @@
 pipeline {
-  agent {
-      label "maven"
-  }
-  stages {
-    stage('Run maven') {
-      steps {
-	sh 'mvn -B -DskipTests clean package'
-    deploy adapters: [tomcat9(credentialsId: 'sample-1', url: 'http://10.85.51.31:8080/')], contextPath: 'Null', war: '**/*.war'      }
-    }
-  }
+      agent any
+            stages {
+                    stage('One') {
+                           steps {
+                                   echo 'hi, thi is kumar'
+                                   }
+                                   }
+                   stage('two') {
+                            steps {
+                                   input('Do tou want to proceed?')
+                                   }
+                                   }
+                    stage('scm') {
+                            steps {
+                                  //some block
+                                  git 'https://github.com/kumarnakka/hello-world.git'
+                                   }
+                                   }
+                   stage('packaging') {
+                          steps {
+                          sh label: '', script: 'mvn package'
+                          }
+                          }
+}
 }
