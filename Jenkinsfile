@@ -6,22 +6,11 @@ pipeline {
          git url: 'https://github.com/kumarnakka/hello-world.git'
        }
      }
-       stage('compile stage'){
+       stage('build'){
          steps {
-         sh 'mvn clean compile'
+         sh 'mvn clean install package'
        }
      }
-         stage('test stage'){
-           steps {
-           sh 'mvn test'
-        }
-      }
-         stage('package stage'){
-          steps {
-             sh 'mvn package'
-              
-         }
-      }
   }
 }
 
