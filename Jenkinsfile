@@ -1,21 +1,21 @@
 pipeline {
   agent none {
-      stages{
+      stages {
        stage('scm checkout'){
        git ('https://github.com/kumarnakka/hello-world.git')
        }
        stage('compile stage'){
-         steps{
+         steps {
          sh 'mvn clean compile'
        }
      }
          stage('test stage'){
-           steps{
+           steps {
            sh 'mvn test'
            }
          }
          stage('package stage'){
-          steps{
+          steps {
              sh 'mvn package'
               
            }
