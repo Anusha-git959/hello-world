@@ -1,5 +1,5 @@
 pipeline {
-  agent none {
+  agent any
       stages {
        stage('scm checkout'){
        git ('https://github.com/kumarnakka/hello-world.git')
