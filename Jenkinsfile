@@ -11,10 +11,10 @@ pipeline {
          sh 'mvn clean install package'
        }
      }
-        stage('Run maven') {
+        stage('deploy') {
       steps {
-	sh 'mvn clean install package'
-    deploy adapters: [tomcat9(credentialsId: 'chowdary', url: 'http://ec2-54-242-80-19.compute-1.amazonaws.com:8090/')], contextPath: 'Null', war: '**/*.war'    
+	sh 'mvn deploy'
+    deploy adapters: [tomcat9(credentialsId: 'tomcat_jenkins', url: 'http://ec2-54-242-80-19.compute-1.amazonaws.com:8090/')], contextPath: 'Null', war: '**/*.war'    
       }
     }
   }
