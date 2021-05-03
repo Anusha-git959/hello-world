@@ -9,7 +9,7 @@ pipeline {
        stage('build'){
          steps {
          sh 'mvn clean install package'
-         deploy adapters: [tomcat:9(credentialsId: 'tomcat_jenkins', url: 'http://ec2-54-242-80-19.compute-1.amazonaws.com:8090/')], contextPath: 'Null', war: '**/*.war' 
+         deploy adapters: [tomcat9(credentialsId: 'tomcat_jenkins', url: 'http://ec2-54-242-80-19.compute-1.amazonaws.com:8090/')], contextPath: 'Null', war: '**/*.war' 
        }
      }   
   }
