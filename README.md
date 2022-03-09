@@ -1,5 +1,3 @@
 # maven-project
 
-Simple Maven Project is here
-github webhook testing -- secondtime 
-thirdtime
+Simple Maven Project
