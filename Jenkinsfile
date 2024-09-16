@@ -1,17 +1,28 @@
 pipeline {
   agent any
       stages {
-       stage('scm checkout'){
-         steps {
+        stage ('folder') {
+           steps{ 
+             sh 'mkdir demotest'
+           }
+        }
+        stage('scm checkout'){
+          steps { 
+           input ('Do you want to proceed')
          git url: 'https://github.com/kumarnakka/hello-world.git'
        }
      }
-       stage('build'){
+        stage('build'){
          steps {
          sh 'mvn clean install package'
-         deploy adapters: [tomcat9(credentialsId: 'tomcat_jenkins', url: 'http://ec2-54-242-80-19.compute-1.amazonaws.com:8090/')], contextPath: 'Null', war: '**/*.war' 
-       }
-     }   
-  }
+        }
+     }
+
+        stage('copying') {
+          steps {
+            cp -r /var/lib/jenkins/workspace/demo-freestyle-job/webapp/target/*  demotest
+         }   
+      }     
+ } 
 }
 
