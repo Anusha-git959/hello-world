@@ -9,7 +9,7 @@ pipeline {
         stage('scm checkout'){
           steps { 
            input ('Do you want to proceed')
-         git url: 'https://github.com/kumarnakka/hello-world.git'
+         git url: 'https://github.com/Anusha-git959/hello-world.git'
        }
      }
         stage('build'){
@@ -19,10 +19,11 @@ pipeline {
      }
 
         stage('copying') {
-          steps {
-            cp -r /var/lib/jenkins/workspace/demo-freestyle-job/webapp/target/*  demotest
+           steps {
+            sh 'cp -r /var/lib/jenkins/workspace/demo-freestyle-job/webapp/target/*  demotest'
          }   
-      }     
+     }      
  } 
 }
+
 
