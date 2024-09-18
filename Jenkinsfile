@@ -3,7 +3,7 @@ pipeline {
       stages {
         stage ('folder') {
            steps{ 
-             sh 'mkdir demotest'
+             sh 'mkdir demotest1'
            }
         }
         stage('scm checkout'){
