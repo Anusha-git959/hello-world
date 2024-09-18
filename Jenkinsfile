@@ -18,11 +18,6 @@ pipeline {
         }
      }
 
-        stage('copying') {
-           steps {
-            sh 'cp -r /var/lib/jenkins/workspace/demo-freestyle-job/webapp/target/*  demotest'
-         }   
-     }      
  } 
 }
 
