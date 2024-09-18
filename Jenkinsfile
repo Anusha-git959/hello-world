@@ -1,27 +1,26 @@
 pipeline {
   agent any
       stages {
-        stage ('one') {
+        stage ('folder') {
            steps{ 
-             sh 'echo 'hi', this is anusha'
+             sh 'mkdir demotest'
            }
         }
         stage('scm checkout'){
           steps { 
            input ('Do you want to proceed')
-        
+         git url: 'https://github.com/Anusha-git959/hello-world.git'
        }
      }
-        stage('scm'){
-         steps { 
-           // some block
-           git url: 'https://github.com/Anusha-git959/hello-world.git'
+        stage('build'){
+         steps {
+         sh 'mvn clean install package'
         }
      }
 
-        stage('packaging') {
+        stage('copying') {
            steps {
-            sh label: '', script:'mvn package'
+            sh 'cp -r /var/lib/jenkins/workspace/demo-freestyle-job/webapp/target/*  demotest'
          }   
      }      
  } 
