@@ -9,6 +9,7 @@ pipeline {
         stage('scm checkout'){
           steps { 
            input ('Do you want to proceed')
+           git url: 'https://github.com/Anusha-git959/hello-world.git'
        }
      }
         stage('build'){
