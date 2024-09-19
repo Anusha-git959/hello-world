@@ -6,12 +6,7 @@ pipeline {
              sh 'echo 'hi', this is anusha'
            }
         }
-        stage('scm checkout'){
-          steps { 
-           input ('Do you want to proceed')
-        
-       }
-     }
+       
         stage('scm'){
          steps { 
            // some block
