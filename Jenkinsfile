@@ -7,7 +7,7 @@ pipeline {
            }
         }
        
-        stage('scm'){
+        stage('scm') {
          steps { 
            // some block
            git url: 'https://github.com/Anusha-git959/hello-world.git'
@@ -19,9 +19,9 @@ pipeline {
             sh 'mvn clean install package'
          }   
      } 
-        stage ('deployment'){
+        stage ('deployment') {
           steps{
-            sshagent(['ubuntu_slave']) {
+            sshagent(['TOMCAT_ID']) {
               sh 'scp -o StrictHostKeyChecking=no webapp/target/webapp.war ubuntu@54.147.233.240:/opt/apache-tomcat-9.0.95/webapps'
 
             }
