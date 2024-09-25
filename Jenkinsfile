@@ -14,11 +14,20 @@ pipeline {
         }
      }
 
-        stage('packaging') {
+        stage('build') {
            steps {
-            sh label: '', script:'mvn package'
+            sh 'mvn clean install package'
          }   
-     }      
+     } 
+        stage ('deployment'){
+          steps{
+            sshagent([TOMCAT_ID]){
+              sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/pipeline/webapp/target/webapp.war ubuntu@54.147.233.240:/opt/apache-tomcat-9.0.95/webapps'
+
+            }
+          }
+        }
  } 
+
 }
 
